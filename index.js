@@ -1,8 +1,8 @@
-const Bot = require('./bot')
-const TagChecker = require('./tagChecker')
+const Bot = require('./octo-telegram/bot')
+const TagChecker = require('./octo-core/tagChecker')
 
 const config = require('./config.json')
 const sitesByChatId = require('./data.json')
 
-const tagChecker = new TagChecker(sitesByChatId)
-const bot = new Bot(config.bot, tagChecker)
+TagChecker.init(sitesByChatId)
+Bot.init(config.bot, TagChecker)
