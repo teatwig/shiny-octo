@@ -19,10 +19,10 @@ function init (config, tagChecker) {
   bot = new TelegramBot(config.token, botOpts)
   tc = tagChecker
 
-  bot.onText(/\/add (.+)/, (msg, match) => {
-    tc.addSite({
-      site: match[1],
-      userId: msg.chat.id
+  bot.onText(/\/add (\S+) (\S+)/, (msg, match) => {
+    tc.addSite(msg.chat.id, {
+      url: match[1],
+      sel: match[2]
     })
   })
 
